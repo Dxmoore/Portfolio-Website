@@ -10,22 +10,23 @@ projectImages.forEach((image) => {
 // Add your dropdown menu code here
 
 // Toggle between light and dark mode
-const toggleSwitch = document.querySelector('.toggle-switch input[type="checkbox"]');
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
 
-toggleSwitch.addEventListener('change', () => {
-  if (toggleSwitch.checked) {
-    document.documentElement.setAttribute('data-theme', 'dark');
+themeToggle.addEventListener('click', () => {
+  body.classList.toggle('dark'); // Toggle the 'dark' class on the body element
+
+  // Store the current theme in local storage
+  if (body.classList.contains('dark')) {
+    localStorage.setItem('theme', 'dark');
   } else {
-    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('theme', 'light');
   }
 });
 
 // Check local storage for the current theme
 const currentTheme = localStorage.getItem('theme');
 if (currentTheme) {
-  document.documentElement.setAttribute('data-theme', currentTheme);
-
-  if (currentTheme === 'dark') {
-    toggleSwitch.checked = true;
-  }
+  body.classList.add(currentTheme); // Apply the saved theme to the body element
 }
+
