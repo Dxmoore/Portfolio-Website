@@ -40,11 +40,15 @@ body {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    width: 1000px
   }
   
   .project img {
-    object-fit: cover;
+    display: inline-flex;
     cursor: pointer;
+    object-fit: contain;
+    width: 150px;
+    height: auto;
   }
   
   .project-info {
